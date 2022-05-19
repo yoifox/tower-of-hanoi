@@ -86,6 +86,8 @@ public class TowerOfHanoi extends Scene
     @Override
     public void update(float delta) {
         super.update(delta);
+        if(Float.isInfinite(delta)) //I should really just change it in glide
+            delta = 0;
         Transformation.moveCamera(mouseInput, keyInput, camera, 0.4f);
         float totalTime = UP_TIME + MOVE_TIME + DOWN_TIME;
         if(animPlaying)
