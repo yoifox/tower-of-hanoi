@@ -50,6 +50,11 @@ public class TowerOfHanoi extends Scene
         new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep((long) (1000 * (UP_TIME + MOVE_TIME + DOWN_TIME)));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 towerOfHanoi(SIZE, a, c, b);
             }
         }).start();
@@ -92,6 +97,7 @@ public class TowerOfHanoi extends Scene
         float totalTime = UP_TIME + MOVE_TIME + DOWN_TIME;
         if(animPlaying)
         {
+            animTime += delta;
             if(animTime > totalTime)
             {
                 animTime = 0;
@@ -121,8 +127,6 @@ public class TowerOfHanoi extends Scene
                 animPlaying = false;
                 disk.setPosition(to.x, max - disk.getBoundingBox().height, to.z);
             }
-
-            animTime += delta;
         }
     }
 
