@@ -4,6 +4,9 @@ import core.body.Entity;
 import core.body.Material;
 import core.body.Mesh;
 import core.body.light.DirectionalLight;
+import core.body.ui.Button;
+import core.body.ui.Color;
+import core.body.ui.Text;
 import core.utils.Transformation;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,9 +126,7 @@ public class TowerOfHanoi extends Scene
             }
             else
             {
-                animTime = 0;
-                animPlaying = false;
-                disk.setPosition(to.x, max - disk.getBoundingBox().height, to.z);
+                animTime = totalTime;
             }
         }
     }
@@ -139,22 +140,22 @@ public class TowerOfHanoi extends Scene
             Entity disk = disks.get(SIZE - n);
 
             if(from == a)
-                maxA -= disk.getBoundingBox().height;
+                maxA -= (disk.getBoundingBox().height + 0.1f);
             if(from == b)
-                maxB -= disk.getBoundingBox().height;
+                maxB -= (disk.getBoundingBox().height + 0.1f);
             if(from == c)
-                maxC -= disk.getBoundingBox().height;
+                maxC -= (disk.getBoundingBox().height + 0.1f);
             float max = 0;
             if(to == a) {
-                maxA += disk.getBoundingBox().height;
+                maxA += (disk.getBoundingBox().height + 0.1f);
                 max = maxA;
             }
             if(to == b) {
-                maxB += disk.getBoundingBox().height;
+                maxB += (disk.getBoundingBox().height + 0.1f);
                 max = maxB;
             }
             if(to == c) {
-                maxC += disk.getBoundingBox().height;
+                maxC += (disk.getBoundingBox().height + 0.1f);
                 max = maxC;
             }
 
